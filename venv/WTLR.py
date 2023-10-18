@@ -40,7 +40,7 @@ def get_cords():
     cord = []
     while cord != None:
         try:
-            cord = [str(input("Введите координату (Буква слева): ")), int(input("Введите координату (Цифра слева): "))]
+            cord = [str(input("Введите координату (Буква слева): ")), int(input("Введите координату (Цифра сверху): "))]
             if cord[0] not in coordinates or (cord[1]<0 or cord[1]>6) :
                 print("Ошибка")
             else:
