@@ -1,5 +1,6 @@
 import time, sys, os
 
+#Данные игры, поля игроков
 field_player1 = [
 
     ["#", "#","#","#","#","#"],
@@ -10,10 +11,6 @@ field_player1 = [
     ["#", "#","#","#","#","#"]
 
 ]
-p1_big_ship = 1
-p1_medium_ship = 2
-p1_small_ship = 3
-
 
 field_player2 = [
 
@@ -24,10 +21,16 @@ field_player2 = [
     ["#", "#","#","#","#","#"],
     ["#", "#","#","#","#","#"]
 ]
+#Данные игры, кол-во кораблей игроков
+p1_big_ship = 1
+p1_medium_ship = 2
+p1_small_ship = 3
+
 p2_big_ship = 1
 p2_medium_ship = 2
 p2_small_ship = 3
 
+#Координаты левого столбика
 coordinates = ["a","b","c","d","e","f"]
 
 player1_name = str(input("Введите имя первого игрока: "));
@@ -35,6 +38,9 @@ player2_name = str(input("Введите имя второго игрока: "))
 
 current_move = player1_name
 current_field = field_player1
+
+
+
 
 def get_cords():
     cord = []
@@ -74,7 +80,7 @@ def create_move(player_move, field, cs, direct):
     elif cs == "2":
         print("Корабль: Средний @@")
         ship_size = 2
-    else:
+    elif cs == "3":
         print("Корабль: Малый @")
         ship_size = 1
     cord = get_cords()
@@ -119,17 +125,18 @@ def place_ship_horizonatal(y, x, ship_size, field):
 def place_ship_vertical(y, x, ship_size, field):
     flag = False
     break_flag = False
-    for j in range(y-1, ship_size+y+1):
+    for i in range(x - 1, ship_size+x+1):
         if break_flag:
             break
-        if j < 0 or j >= 6:
+        if i < 0 or i >= 6:
             continue
-        for i in range(x-1, 3):
-            if i < 0 or i >= 6:
+        for j in range(y - 1, y + 2):
+            if j < 0 or j >= 6:
                 continue
             if field[i][j] == "#":
                 flag = True
             else:
+
                 flag = False
                 break_flag = True
                 print("Рядом стоимт корабль!")
@@ -167,12 +174,14 @@ def choose_ship(player_name, bs, ms, ss):
 
             cd = choose_direct(player_name, bs, ms, ss)
             cm = create_move(current_move, current_field, choosen_ship, cd)
+            print(current_field)
             if cm:
                 bs -= 1
         elif choosen_ship == "2" and ms != 0:
 
             cd = choose_direct(player_name, bs, ms, ss)
             cm = create_move(current_move, current_field, choosen_ship, cd)
+            print(current_field)
             if cm:
                 ms -= 1
         elif choosen_ship == "3" and ss != 0:

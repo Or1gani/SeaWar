@@ -11,6 +11,7 @@ field = [
 ]
 coordinates = ["a","b","c","d","e","f"]
 
+
 def display_field(field):
     row = 0
     colums = 0
