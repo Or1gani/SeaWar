@@ -4,7 +4,7 @@ import time, sys, os
 class Player():
     player_name = ""
 
-    big_ship = 0
+    big_ship = 1
     medium_ship = 1
     small_ship = 1
     alive_ships = big_ship + small_ship + medium_ship
@@ -295,6 +295,8 @@ class Game():
                             flag = True
                         else:
                             flag = False
+                    if flag:
+                        break
                 if flag:
                     memory_key = key
                     field2.ship_location.pop(key)
@@ -314,6 +316,8 @@ class Game():
                             flag1 = True
                         else:
                             flag1 = False
+                    if flag1:
+                        break
                 if flag1:
                     memory_key = key
                     field1.ship_location.pop(key)
@@ -386,6 +390,7 @@ class Main():
     else:
         print(f"\033[1m\033[31m{f'Победил Игрок: {player1.player_name}'}\033[0m")
     print(f"\033[1m\033[31m{'GAME OVER'}\033[0m")
+    time.sleep(10)
 
 
 Main()
